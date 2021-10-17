@@ -1,34 +1,24 @@
 ﻿using DecoratorPattern2.Component;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DecoratorPattern2.Decorator
 {
-    public abstract class CarDecorator:ICar
+    public abstract class CarDecorator:AbstractCar
     {
-        public ICar _car;
-        public string _name;
-        public double _price;
+        AbstractCar _car;
 
-        protected CarDecorator(ICar car, string name, double price)
+        public CarDecorator(AbstractCar car) : base(car.name, car.horsePower, car.price)
         {
             _car = car;
-            _name = name;
-            _price = price;
         }
 
         public override double GetCost()
         {
-            return base.GetCost() + _price;
+            return base.GetCost();
         }
 
-        public override void GetDescription()
+        public override string GetDescription()
         {
-            base.GetDescription();
-            Console.WriteLine("\nExtra: ", _name);
+            return base.GetDescription();
         }
     }
 }
